@@ -55,6 +55,7 @@ std::string clean_message(std::string message) {
 	std::regex replace_special_chars("[^a-zA-Z ]"); // only keep letters and spaces
 	std::stringstream cleaned_message;
 
+	// replace special chars
 	std::regex_replace(std::ostream_iterator<char>(cleaned_message), message.begin(), message.end(), replace_special_chars, "");
 
 	return cleaned_message.str();
