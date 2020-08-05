@@ -28,14 +28,14 @@ int main()
 	// clean chat message
 	chat_message = clean_message(chat_message);
 
-	// stream chars
-	std::stringstream stream_stream(chat_message);
+	// create string stream of words in message
+	std::stringstream string_stream(chat_message);
 
 	do {
 		// currently streamed word declaration
 		std::string word;
 		// stream and assign word
-		stream_stream >> word;
+		string_stream >> word;
 
 		// flag if word is banned
 		const bool is_in = banned_words.find(word) != banned_words.end();
@@ -44,7 +44,7 @@ int main()
 		if (is_in) {
 			chat_message.replace(chat_message.find(word), word.size(), "****");
 		}
-	} while (stream_stream);
+	} while (string_stream);
 
 	// censored message char output 
 	std::cout << chat_message;
